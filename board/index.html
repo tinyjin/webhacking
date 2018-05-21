@@ -2,19 +2,13 @@
 <html lang="ko">
 
 <head>
+  <title>Jinui Board</title>
   <meta charset="utf-8" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-
-  <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-  <!-- Popper JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-
-  <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
   <script>
@@ -79,26 +73,25 @@
       }
     });
   </script>
-
-
 </head>
 
 <body>
 
   <!-- 네비게이션바 -->
-  <nav class="navbar bg-dark navbar-dark navbar-inverse">
+  <nav class="navbar navbar-dark bg-dark">
+
     <div class="container-fluid">
 
       <ul class="nav navbar-nav">
 
-        <li><a class="nav-link" id="login_id"></a></li>
+        <li><a href="#" class="nav-link" id="login_id"></a></li>
 
       </ul>
 
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-right">
 
-        <li><a href="write.html" class="nav-link" id="write_btn">글쓰기</a></li>
-        <li><a href="logout.php" class="nav-link" id="logout_btn">로그아웃</a></li>
+        <li class="nav-link"><a href="write.html" id="write_btn">글쓰기</a></li>
+        <li class="nav-link"><a href="logout.php" id="logout_btn">로그아웃</a></li>
 
       </ul>
 
@@ -107,29 +100,23 @@
   </nav>
 
   <!-- 로그인 페이지 -->
-  <div class="container" id="page_login">
+  <div class="container jumbotron" vertical-align="middle" id="page_login">
 
-    <h2>로그인 페이지</h2>
+    <h2 class="text-center">로그인</h2>
 
-    <form class="form-horizontal card" style="padding:10px" action="./login.php" method="post">
+    <form class="form-horizontal card" align="center" style="padding:20px; margin:10px" action="./login.php" method="post">
 
-      <div class="form-group">
-        <label class="col-sm-2 control-label">ID : </label>
-        <div class="col-sm-10">
-          <input class="form-control" placeholder="아이디" type="text" name="id" />
-        </div>
+      <div class="form-group" align="center">
+
+        <input class="form-control col-sm-10" placeholder="아이디" type="text" name="id" />
+        <input class="form-control col-sm-10" placeholder="비밀번호" type="password" name="pw" style="margin-top:10px" />
+
       </div>
 
-      <div class="form-group">
-        <label class="col-sm-2 control-label">Password : </label>
-        <div class="col-sm-10">
-          <input class="form-control" placeholder="비밀번호" type="password" name="pw" />
-        </div>
-      </div>
 
       <div class="form-group">
-        <input type="submit" value="로그인" class="btn" />
-        <input type="button" value="회원가입" onclick="location.href='register.html'" class="btn btn-secondary" />
+        <input type="submit" value="로그인" class="btn col-sm-10" /><br/>
+        <input type="button" value="회원가입" onclick="location.href='register.html'" class="btn btn-secondary col-sm-10" style="margin-top:10px" />
 
       </div>
 
@@ -139,9 +126,7 @@
   </div>
 
   <!-- 게시판 조회 페이지 -->
-  <div class="container" id="page_board">
-
-    <h2>게시판</h2>
+  <div class="container" id="page_board" style="margin-top:10px; margin-bottom:10px">
 
     <ul class="list-group" id="list_board">
 

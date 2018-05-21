@@ -1,11 +1,64 @@
-<form action="./register.php" method="post">
-<h2>회원가입</h2>
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+  <script>
+  </script>
+
+</head>
+
+<body>
+
+  <nav class="navbar bg-dark navbar-dark navbar-inverse">
+
+    <ul class="nav navbar-nav">
+      <li><a class="nav-link">간단한 회원가입으로 보드를 이용해보세요!</a></li>
+    </ul>
+
+  </nav>
+
+  <div class="container jumbotron" vertical-align="middle" id="page_register">
+
+    <h2 class="text-center">회원가입</h2>
+
+    <form class="form-horizontal card" style="padding:10px" action="./register.php" method="post">
+
+      <div class="form-group">
+
+        <input name="id" class="form-control" type="text" placeholder="아이디" maxlength="10" />
+        <input name="pw" class="form-control" style="margin-top:10px" type="password" placeholder="비밀번호" maxlength="20" />
+        <input name="name" class="form-control" type="text" style="margin-top:10px" placeholder="닉네임" maxlength="10" />
+
+        <input class="btn col-sm-10" style="margin-top:20px" type="submit" id="confirm" value="완료" />
+
+      </div>
 
 
-아이디 : <input name="id" type="text" maxlength="10"/><br>
-비밀번호 : <input name="pw" type="password" maxlength="20"/><br>
-닉네임 : <input name="name" type="text" maxlength="10"/><br>
+    </form>
 
-<input type="submit" value="완료"/>
 
-</form>
+
+
+  </div>
+
+
+  </form>
+
+</body>
+
+</html>
