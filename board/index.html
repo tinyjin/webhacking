@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+  <script>
+    function showBoard(num) {
+      $.get("board.php?num=".concat(num), function(data, status) {
+
+        var obj = JSON.parse(data);
+        var list = $("#list_board");
+
+        for (var i = 0; i < obj.length; i++) {
+          var o = obj[i];
+
+          var div = document.createElement("div");
+
+          div.setAttribute('class', 'row');
+
+          var a1 = document.createElement("a");
+          var a2 = document.createElement("a");
+          a2.setAttribute('href', 'read.html?num='.concat(o.num));
+          var a3 = document.createElement("a");
+
+          a1.setAttribute('class', 'col');
+          a2.setAttribute('class', 'col');
+          a3.setAttribute('class', 'col');
+
+          a1.textContent = o.num;
+          a2.textContent = o.title;
+          a3.textContent = o.name;
+
+          div.appendChild(a1);
+          div.appendChild(a2);
+          div.appendChild(a3);
+
+          var li = document.createElement("li");
+          li.setAttribute('class', 'list-group-item');
+
+          li.appendChild(div);
+          list.append(li);
+        }
+
+      });
+    }
+
+    $.get("session_id.php", function(data, status) {
+
+      if (data) {
+
+        var loginPage = $("#page_login");
+        loginPage.hide();
+
+        showBoard();
+
+        $("#login_id").text(data + '님 안녕하세요!');
+      } else {
+        $("#page_board").hide();
+
+        $("#logout_btn").hide();
+        $("#write_btn").hide();
+
+        $("#login_id").text("로그인이 필요한 서비스입니다.");
+
+      }
+    });
+  </script>
+
+
+</head>
+
+<body>
+
+  <!-- 네비게이션바 -->
+  <nav class="navbar bg-dark navbar-dark navbar-inverse">
+    <div class="container-fluid">
+
+      <ul class="nav navbar-nav">
+
+        <li><a class="nav-link" id="login_id"></a></li>
+
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+
+        <li><a href="write.html" class="nav-link" id="write_btn">글쓰기</a></li>
+        <li><a href="logout.php" class="nav-link" id="logout_btn">로그아웃</a></li>
+
+      </ul>
+
+    </div>
+
+  </nav>
+
+  <!-- 로그인 페이지 -->
+  <div class="container" id="page_login">
+
+    <h2>로그인 페이지</h2>
+
+    <form class="form-horizontal card" style="padding:10px" action="./login.php" method="post">
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">ID : </label>
+        <div class="col-sm-10">
+          <input class="form-control" placeholder="아이디" type="text" name="id" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Password : </label>
+        <div class="col-sm-10">
+          <input class="form-control" placeholder="비밀번호" type="password" name="pw" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="submit" value="로그인" class="btn" />
+        <input type="button" value="회원가입" onclick="location.href='register.html'" class="btn btn-secondary" />
+
+      </div>
+
+    </form>
+
+
+  </div>
+
+  <!-- 게시판 조회 페이지 -->
+  <div class="container" id="page_board">
+
+    <h2>게시판</h2>
+
+    <ul class="list-group" id="list_board">
+
+      <li class="list-group-item">
+        <div class="row">
+          <a class="col">번호</a>
+          <a class="col">제목</a>
+          <a class="col">닉네임</a>
+        </div>
+      </li>
+
+    </ul>
+
+
+  </div>
+
+</body>
+
+</html>

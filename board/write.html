@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+  <script>
+
+    $(document).ready(function() {
+
+      //업로드 클릭
+      $("#upload_btn").click(function() {
+
+        var title = $("#title").val();
+        var content = $("#content").val();
+
+        $.post("write.php", {title : title, content : content}, function(data, status) {
+          history.back();
+        });
+
+
+        }
+      );
+
+    });
+
+  </script>
+
+</head>
+
+<body>
+  <div class="container" id="page_write">
+
+    <ul class="list-group">
+      <li class="list-group-item">
+        <input type="text" placeholder="제목을 입력하세요." id="title" class="form-control"/>
+      </li>
+
+      <li class="list-group-item">
+        <textarea cols="10" placeholder="내용을 입력하세요." id="content" class="form-control"></textarea>
+      </li>
+
+      <li class="list-group-item">
+        <div class="row">
+          <input type="button" cols="10" value="올리기" id="upload_btn" class="btn" />
+        </div>
+      </li>
+    </ul>
+
+
+  </div>
+
+</body>
+
+</html>

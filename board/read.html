@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+  <script>
+
+    var title = $("#title");
+    var content = $("#content");
+
+    var url = location.href;
+
+    var num = url.slice(url.indexOf('?')+1, url.length).split('=')[1];
+
+    $.get("read.php?num=".concat(num), function(data, status) {
+
+      var obj = JSON.parse(data);
+
+      $("#title").text(obj.title);
+      $("#content").text(obj.content);
+
+    });
+
+  </script>
+
+</head>
+
+<body>
+
+  <div class="container" id="page_read">
+
+    <ul class="list-group">
+
+      <li class="list-group-item row">
+        <label cols="2">제목</label>
+        <label id="title" class="form-control" cols="8"></label>
+      </li>
+
+      <li class="list-group-item row">
+        <label>내용</label>
+        <label cols="10" id="content" class="form-control"></label>
+      </li>
+
+    </ul>
+
+
+  </div>
+
+</body>
+
+</html>
